@@ -24,16 +24,31 @@ cd MidTermProject
 
 You can open the project in VS Code in several ways:
 
-### Option A: Using the Command Line
+### Option A: Using Automated Setup Scripts (Easiest)
+
+**Windows:**
+1. Navigate to the `MidTermProject` folder
+2. Double-click `setup.bat`
+3. Follow the prompts - it will set everything up automatically
+4. When done, run: `code .`
+
+**macOS/Linux:**
+1. Open Terminal in the `MidTermProject` folder
+2. Run: `./setup.sh`
+3. When done, run: `code .`
+
+### Option B: Using the Command Line
 ```bash
 code .
 ```
 
-### Option B: Using VS Code GUI
+### Option C: Using VS Code GUI
 1. Open Visual Studio Code
 2. Click on `File` > `Open Folder...`
 3. Navigate to the `MidTermProject` folder and select it
 4. Click `Open`
+
+**Detailed VS Code instructions**: See [VSCODE_GUIDE.md](VSCODE_GUIDE.md) for comprehensive VS Code setup and usage tips.
 
 ## Step 3: Install Recommended Extensions
 
@@ -54,7 +69,9 @@ Alternatively, you can manually install extensions by:
 
 ## Step 4: Set Up Python Virtual Environment
 
-Create and activate a virtual environment to isolate project dependencies:
+**Quick Method**: If you used the automated setup scripts (`setup.bat` or `setup.sh`), your virtual environment is already set up. Skip to Step 5.
+
+**Manual Method**: Create and activate a virtual environment to isolate project dependencies:
 
 ### On Windows:
 ```bash
@@ -70,14 +87,26 @@ source venv/bin/activate
 
 ## Step 5: Install Required Python Packages
 
-Install PySpark and other dependencies:
+**Quick Method**: If you used the automated setup scripts, dependencies are already installed. You can verify by running:
+```bash
+pip list
+```
+
+**Manual Method**: Install PySpark and other dependencies:
 
 ```bash
 pip install --upgrade pip
-pip install pyspark pandas matplotlib seaborn jupyter notebook scikit-learn
+pip install -r requirements.txt
 ```
 
-**Note:** If you need specific versions, you can create a `requirements.txt` file.
+This will install all required packages listed in `requirements.txt`:
+- PySpark
+- Pandas
+- Matplotlib
+- Seaborn
+- Jupyter
+- Scikit-learn
+- And more...
 
 ## Step 6: Verify Java Installation
 
@@ -109,12 +138,17 @@ Before running the notebook, you need to have the data file:
 MidTermProject/
 ├── .vscode/                    # VS Code configuration
 │   ├── settings.json          # Editor settings
-│   └── extensions.json        # Recommended extensions
+│   ├── extensions.json        # Recommended extensions
+│   └── launch.json            # Debug configuration
 ├── .gitignore                 # Git ignore file
 ├── EndTerm.ipynb              # Main Jupyter notebook
 ├── End term_1.pdf             # Project documentation
 ├── README.md                  # Project overview
-└── SETUP.md                   # This file
+├── SETUP.md                   # This file
+├── VSCODE_GUIDE.md           # Detailed VS Code guide
+├── requirements.txt           # Python dependencies
+├── setup.sh                   # Automated setup (macOS/Linux)
+└── setup.bat                  # Automated setup (Windows)
 ```
 
 ## Working with the Notebook
@@ -174,6 +208,7 @@ PySpark can be memory-intensive. If you encounter memory errors:
 
 ## Additional Resources
 
+- [VS Code Guide for This Project](VSCODE_GUIDE.md) - Comprehensive VS Code setup and usage
 - [PySpark Documentation](https://spark.apache.org/docs/latest/api/python/)
 - [Pandas Documentation](https://pandas.pydata.org/docs/)
 - [Jupyter Notebook in VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks)
